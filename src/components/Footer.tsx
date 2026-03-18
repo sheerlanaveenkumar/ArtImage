@@ -1,75 +1,167 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Facebook, Twitter, Youtube, Instagram } from "lucide-react";
+import { Facebook, Youtube, Instagram } from "lucide-react";
+import { Twitter } from "lucide-react";
+
+// X (Twitter) icon as SVG since lucide's Twitter is the old bird
+function XIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className={className}
+      aria-hidden="true"
+    >
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622 5.91-5.622Zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+    </svg>
+  );
+}
 
 export function Footer() {
   return (
-    <footer className="pt-24 pb-12 bg-panel border-t border-white/5">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
-          <div className="col-span-1 md:col-span-1">
-            <Link href="/" className="flex items-center gap-2 mb-6">
-              <Image src="/images/logo.png" alt="Artimg" width={32} height={32} />
-              <span className="text-xl font-bold tracking-tight">Artimg</span>
+    <footer className="bg-panel border-t border-white/5 font-sans antialiased">
+      {/* ── Main grid ── */}
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="
+          grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4
+          divide-y sm:divide-y-0 lg:divide-x
+          divide-white/8
+          py-16 sm:py-20
+        ">
+
+          {/* ── Col 1: Brand ── */}
+          <div className="pb-10 sm:pb-0 lg:pr-12 xl:pr-16 flex flex-col gap-6">
+            {/* Logo */}
+            <Link href="/" className="flex items-center gap-3 w-fit">
+              <Image
+                src="/images/logo.png"
+                alt="Artimg"
+                width={130}
+                height={36}
+                className="object-contain"
+                priority
+              />
+              {/* <span className="text-xl font-bold tracking-tight text-white">Artimg</span> */}
             </Link>
-            <p className="text-muted-foreground mb-8 text-sm leading-relaxed">
-              Empowering creativity through advanced AI image generation. 
-              Transform your words into extraordinary visuals with Artimg.
+
+            {/* Tagline */}
+            <p className="text-muted-foreground text-sm leading-relaxed max-w-[240px]">
+              Create stunning visuals with just a click begin your adventure!
+              Turn the unreal undeniable.
             </p>
-            <div className="flex items-center gap-4">
-              <Link href="#" className="p-2 glass-panel rounded-lg hover:text-brand transition-colors">
-                <Facebook className="w-5 h-5" />
-              </Link>
-              <Link href="#" className="p-2 glass-panel rounded-lg hover:text-brand transition-colors">
-                <Twitter className="w-5 h-5" />
-              </Link>
-              <Link href="#" className="p-2 glass-panel rounded-lg hover:text-brand transition-colors">
-                <Youtube className="w-5 h-5" />
-              </Link>
-              <Link href="#" className="p-2 glass-panel rounded-lg hover:text-brand transition-colors">
-                <Instagram className="w-5 h-5" />
-              </Link>
+
+            {/* Social icons */}
+            <div className="flex items-center gap-3 mt-2">
+              {[
+                { href: "#", icon: <Facebook className="w-4 h-4" />, label: "Facebook" },
+                { href: "#", icon: <XIcon className="w-4 h-4" />, label: "X" },
+                { href: "#", icon: <Youtube className="w-4 h-4" />, label: "YouTube" },
+                { href: "#", icon: <Instagram className="w-4 h-4" />, label: "Instagram" },
+              ].map(({ href, icon, label }) => (
+                <Link
+                  key={label}
+                  href={href}
+                  aria-label={label}
+                  className="
+                    w-9 h-9 flex items-center justify-center
+                    rounded-full
+                    border border-white/10
+                    text-muted-foreground hover:text-white
+                    hover:border-white/30
+                    transition-colors duration-200
+                  "
+                >
+                  {icon}
+                </Link>
+              ))}
             </div>
           </div>
 
-          <div className="col-span-1">
-            <h4 className="font-bold mb-6">Quick Links</h4>
-            <ul className="space-y-4">
-              <li><Link href="/" className="text-muted-foreground hover:text-brand text-sm transition-colors">Home</Link></li>
-              <li><Link href="/about" className="text-muted-foreground hover:text-brand text-sm transition-colors">About Us</Link></li>
-              <li><Link href="/features" className="text-muted-foreground hover:text-brand text-sm transition-colors">Features</Link></li>
-              <li><Link href="/pricing" className="text-muted-foreground hover:text-brand text-sm transition-colors">Pricing</Link></li>
+          {/* ── Col 2: Quick Links ── */}
+          <div className="py-10 sm:py-0 sm:pl-8 lg:px-12 xl:px-16 flex flex-col gap-6">
+            <h4 className="font-bold text-white text-base">Quick Links</h4>
+            <ul className="flex flex-col gap-4">
+              {[
+                { label: "Home", href: "/" },
+                { label: "About", href: "/about" },
+                { label: "Features", href: "/features" },
+                { label: "Blog", href: "/blog" },
+                { label: "Contact", href: "/contact" },
+              ].map(({ label, href }) => (
+                <li key={label}>
+                  <Link
+                    href={href}
+                    className="text-muted-foreground hover:text-white text-sm transition-colors duration-200"
+                  >
+                    {label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          <div className="col-span-1">
-            <h4 className="font-bold mb-6">Resources</h4>
-            <ul className="space-y-4">
-              <li><Link href="/blog" className="text-muted-foreground hover:text-brand text-sm transition-colors">Blog</Link></li>
-              <li><Link href="/faq" className="text-muted-foreground hover:text-brand text-sm transition-colors">FAQ</Link></li>
-              <li><Link href="/contact" className="text-muted-foreground hover:text-brand text-sm transition-colors">Contact</Link></li>
-              <li><Link href="/support" className="text-muted-foreground hover:text-brand text-sm transition-colors">Support</Link></li>
+          {/* ── Col 3: Utility Pages ── */}
+          <div className="py-10 sm:py-0 sm:pl-8 lg:px-12 xl:px-16 flex flex-col gap-6">
+            <h4 className="font-bold text-white text-base">Utility Pages</h4>
+            <ul className="flex flex-col gap-4">
+              {[
+                { label: "Password Protected", href: "/password" },
+                { label: "404 Not Found", href: "/404" },
+                { label: "Style Guide", href: "/style" },
+                { label: "Licenses", href: "/licenses" },
+                { label: "Changelog", href: "/changelog" },
+              ].map(({ label, href }) => (
+                <li key={label}>
+                  <Link
+                    href={href}
+                    className="text-muted-foreground hover:text-white text-sm transition-colors duration-200"
+                  >
+                    {label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          <div className="col-span-1">
-            <h4 className="font-bold mb-6">Contact Us</h4>
-            <ul className="space-y-4">
-              <li className="text-sm text-muted-foreground">support@artimg.com</li>
-              <li className="text-sm text-muted-foreground">+1 (555) 123-4567</li>
-              <li className="text-sm text-muted-foreground">123 AI Boulevard, Silicon Valley, CA</li>
+          {/* ── Col 4: Contact Us ── */}
+          <div className="pt-10 sm:pt-0 sm:pl-8 lg:pl-12 xl:pl-16 flex flex-col gap-6">
+            <h4 className="font-bold text-white text-base">Contact Us</h4>
+            <ul className="flex flex-col gap-5">
+              <li className="text-sm text-muted-foreground leading-relaxed">
+                505 Willow Way,<br />New York, NY 10011
+              </li>
+              <li>
+                <a
+                  href="mailto:info@artimg.com"
+                  className="text-sm text-muted-foreground hover:text-white transition-colors duration-200"
+                >
+                  info@artimg.com
+                </a>
+              </li>
+              <li>
+                <a
+                  href="tel:+11234567890"
+                  className="text-sm text-muted-foreground hover:text-white transition-colors duration-200"
+                >
+                  (123) 456-7890
+                </a>
+              </li>
             </ul>
           </div>
+
         </div>
+      </div>
 
-        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-muted-foreground">
-            © 2024 Artimg. All rights reserved.
+      {/* ── Bottom bar ── */}
+      <div className="border-t border-white/5">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 text-center">
+          <p className="text-xs sm:text-sm text-muted-foreground">
+            Copyright © Artimg
           </p>
-          <div className="flex items-center gap-8">
-            <Link href="/privacy" className="text-xs text-muted-foreground hover:text-white transition-colors">Privacy Policy</Link>
-            <Link href="/terms" className="text-xs text-muted-foreground hover:text-white transition-colors">Terms of Service</Link>
-          </div>
+          <span className="hidden sm:inline text-muted-foreground/40">|</span>
+          <p className="text-xs sm:text-sm text-muted-foreground">
+            Designed by Brandbes – Powered by Webflow
+          </p>
         </div>
       </div>
     </footer>

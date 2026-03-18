@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Inter, Geist } from "next/font/google";
+import { Plus_Jakarta_Sans, Inter, Exo } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
-
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta-sans",
@@ -13,6 +11,12 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
+});
+
+const exo = Exo({
+  variable: "--font-exo",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -26,9 +30,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={cn("dark", "font-sans", geist.variable)}>
+    <html lang="en" className={cn("dark", inter.variable, exo.variable)}>
       <body
-        className={`${plusJakartaSans.variable} ${inter.variable} antialiased font-sans`}
+        className={`${plusJakartaSans.variable} ${inter.variable} ${exo.variable} antialiased font-inter`}
       >
         {children}
       </body>
