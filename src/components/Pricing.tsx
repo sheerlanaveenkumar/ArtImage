@@ -168,9 +168,25 @@ export default function Pricing() {
                 delay: 0.6 + i * 0.15,
                 ease: "easeOut",
               }}
-              className="flex flex-col rounded-3xl border border-white/30 p-8"
-              style={{ background: "#111113" }}
+              className="group relative flex flex-col rounded-[32px] overflow-hidden p-[1px]"
             >
+              {/* Animated Gradient Border — only visible on hover */}
+              <div className="absolute inset-[-50%] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                <motion.div
+                  animate={{ rotate: [0, 360] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                  className="w-full h-full"
+                  style={{
+                    background: "conic-gradient(from 0deg, transparent 0 35%, #dd429d 40%, #485cfb 50%, #dd429d 60%, transparent 65% 85%, #dd429d 90%, #485cfb 100%)",
+                  }}
+                />
+              </div>
+
+              {/* Inner Card Content */}
+              <div
+                className="relative z-10 flex flex-col h-full rounded-[31px] p-8"
+                style={{ background: "#111113" }}
+              >
               {/* Top Row: Plan name badge + Price */}
               <div className="flex justify-between items-center mb-5">
                 <span
@@ -217,10 +233,10 @@ export default function Pricing() {
                       {f.available ? (
                         <Check size={13} className="text-white" />
                       ) : (
-                        <X size={13} className="text-gray-500" />
+                        <X size={13} className="text-white" />
                       )}
                     </span>
-                    <span className={`text-base text-lg ${f.available ? "text-white" : "text-gray-500"}`}>
+                    <span className={`text-base text-lg ${f.available ? "text-white" : "text-white"}`}>
                       {f.text}
                     </span>
                   </li>
@@ -235,20 +251,20 @@ export default function Pricing() {
                 <div className="absolute inset-0 bg-gradient-to-r from-[#dd429d] to-[#485cfb] translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-700 ease-in-out" />
                 <div className="relative z-10 flex items-center justify-center gap-2 px-6">
                   <div className="absolute -left-2 opacity-0 -translate-x-4 transition-all duration-700 group-hover:opacity-100 group-hover:translate-x-6">
-                    <Image src="/images/button-icon-2.svg" alt="Spark" width={14} height={14} />
+                    <Image src="/images/button-icon-1.svg" alt="Spark" width={14} height={14} />
                   </div>
                   <span className="text-[15px] font-bold text-black transition-all duration-700 group-hover:text-white group-hover:translate-x-4 whitespace-nowrap">
                     Get Started Now
                   </span>
                   <div className="opacity-100 transition-all duration-700 group-hover:opacity-0 group-hover:translate-x-4">
-                    <Image src="/images/button-icon-1.svg" alt="Spark" width={14} height={14} />
+                    <Image src="/images/button-icon-3.svg" alt="Spark" width={14} height={14} />
                   </div>
                 </div>
               </button>
+              </div>
             </motion.div>
           ))}
         </div>
-
       </div>
     </section>
   );

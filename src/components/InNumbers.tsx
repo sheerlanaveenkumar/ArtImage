@@ -4,14 +4,14 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 const badgeText = "In Numbers";
-const h2Text = "Discover key AI tool statistics";
-const pText = "Discover the power of creativity through data! Our AI has generated over 1 million unique images.";
+const h2Text = "Discover key ZunoSync statistics";
+const pText = "Content shouldn't feel this hard. Some days you know you need to post… but the ideas just don't come. You spend hours thinking, rewriting, searching and still the engagement feels random.";
 
 const stats = [
-  { value: "99%", label: "Worldwide Client Satisfaction" },
-  { value: "75+", label: "Global Company Investment" },
-  { value: "95k", label: "Total Worldwide Users" },
-  { value: "25+", label: "Image Generation Modes" },
+  { value: "10x", label: "Faster Content Creation" },
+  { value: "50k+", label: "Posts Generated" },
+  { value: "98%", label: "User Satisfaction" },
+  { value: "5+", label: "Platforms Supported" },
 ];
 
 // ─── Letter-by-letter blur reveal ────────────────────────────────────────────
@@ -165,15 +165,7 @@ export function InNumbers() {
                   className="border border-white/[0.08] px-8 py-7 rounded-2xl flex flex-col justify-center hover:border-white/20 transition-colors duration-300"
                   style={{ background: i % stats.length === 0 ? "#161616" : "#111111" }}
                 >
-                  <h3
-                    className="text-5xl font-bold mb-3 tracking-tight"
-                    style={{
-                      background: "linear-gradient(to right, #dd429d, #b14bf4, #fb48f5ff)",
-                      WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent",
-                      backgroundClip: "text",
-                    }}
-                  >
+                  <h3 className="inline-block w-fit text-5xl font-bold mb-3 tracking-tight bg-gradient-to-r from-[#dd429d] to-[#485cfb] bg-clip-text text-transparent">
                     {stat.value}
                   </h3>
                   <p className="text-base text-white/80 font-medium">{stat.label}</p>

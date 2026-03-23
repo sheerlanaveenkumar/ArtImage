@@ -2,11 +2,13 @@
 
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, Menu, X } from "lucide-react";
 
 export function Navbar() {
+  const pathname = usePathname();
   const [isPagesOpen, setIsPagesOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -56,22 +58,26 @@ export function Navbar() {
   ];
 
   const navLinks = [
-    { name: "Home", href: "/", active: true },
-    { name: "About", href: "/" },
+    { name: "Home", href: "/" },
+    { name: "About", href: "#" },
     { name: "Features", href: "/features" },
   ];
 
+  const isAnyPageActive = pagesData.some((section) =>
+    section.links.some((link) => pathname === link.href)
+  );
+
   return (
     <>
-      <nav className="fixed top-0 w-full z-50 border-b border-white/5 bg-black/80 backdrop-blur-xl">
-        <div className="container mx-auto px-4 h-20 flex items-center justify-between">
+      <nav className="fixed top-0 w-full z-50 border-b border-white/5 bg-[#0F0716] backdrop-blur-xl">
+        <div className="container mx-auto px-4 h-22 flex items-center justify-between">
           {/* Logo - Added left padding */}
-          <Link href="/" className="flex items-center pl-4 lg:pl-10">
+          <Link href="/" className="flex items-center pl-4 lg:pl-40">
             <Image
               src="/images/newlogo.png"
               alt="Artimg"
               width={130}
-              height={36}
+              height={50}
               className="object-contain"
               priority
             />
@@ -79,27 +85,31 @@ export function Navbar() {
 
           {/* Desktop Nav Links */}
           <div className="hidden md:flex items-center gap-10">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className={`text-[15px] font-medium transition-colors ${link.active ? "text-[#d148cf]" : "text-white/60 hover:text-white"
-                  }`}
-              >
-                {link.name}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href;
+              return (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className={`text-[15px] font-medium transition-colors ${isActive ? "text-[#d148cf]" : "text-white/60 hover:text-white"
+                    }`}
+                >
+                  {link.name}
+                </Link>
+              );
+            })}
 
             {/* Pages Dropdown Trigger */}
             <div className="relative" ref={dropdownRef}>
               <button
                 onClick={() => setIsPagesOpen(!isPagesOpen)}
-                className="group flex items-center gap-1.5 text-[15px] font-medium text-white/60 hover:text-white transition-colors focus:outline-none"
+                className={`group flex items-center gap-1.5 text-[15px] font-medium transition-colors focus:outline-none ${isAnyPageActive ? "text-[#d148cf]" : "text-white/60 hover:text-white"
+                  }`}
               >
                 <span>Pages</span>
                 <ChevronDown
-                  className={`w-4 h-4 transition-transform duration-300 ${isPagesOpen ? "rotate-180 text-[#d148cf]" : ""
-                    }`}
+                  className={`w-4 h-4 transition-transform duration-300 ${isPagesOpen ? "rotate-180" : ""
+                    } ${isAnyPageActive ? "text-[#d148cf]" : ""}`}
                 />
               </button>
 
@@ -129,12 +139,16 @@ export function Navbar() {
                                 href={link.href}
                                 className="group/item relative flex items-center transition-all duration-300"
                               >
+                                {pathname === link.href && (
+                                  <div className="h-[3px] w-3 bg-[#d148cf] rounded-full shrink-0 mr-2.5" />
+                                )}
                                 <motion.div
                                   initial={{ width: 0, opacity: 0, marginRight: 0 }}
                                   whileHover={{ width: 12, opacity: 1, marginRight: 10 }}
                                   className="h-[3px] bg-[#d148cf] rounded-full shrink-0"
                                 />
-                                <span className="text-[16px] text-white/70 group-hover/item:text-[#d148cf] transition-colors">
+                                <span className={`text-[16px] transition-colors ${pathname === link.href ? "text-[#d148cf]" : "text-white/70 group-hover/item:text-[#d148cf]"
+                                  }`}>
                                   {link.name}
                                 </span>
                               </Link>
@@ -150,7 +164,7 @@ export function Navbar() {
           </div>
 
           {/* Action Buttons - Added right padding */}
-          <div className="flex items-center gap-4 pr-4 lg:pr-10">
+          <div className="flex items-center gap-4 pr-4 lg:pr-40">
             <button className="hidden md:flex group relative items-center justify-center max-w-[180px] h-[48px] rounded-full overflow-hidden transition-all duration-700 ease-in-out border border-white/30">
               {/* Base Gradient Background */}
               <div className="absolute inset-0 bg-gradient-to-r from-[#dd429d] to-[#485cfb] transition-opacity duration-700 group-hover:opacity-0" />
@@ -198,23 +212,26 @@ export function Navbar() {
             className="fixed inset-0 top-[80px] bg-[#0a0a0a] z-[9999] md:hidden flex flex-col overflow-y-auto"
           >
             <div className="flex flex-col p-8 space-y-10 w-full min-h-full pb-20">
-              {navLinks.map((link, i) => (
-                <motion.div
-                  key={link.name}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.1 }}
-                >
-                  <Link
-                    href={link.href}
-                    className={`text-2xl font-bold transition-colors ${link.active ? "text-[#d148cf]" : "text-white/60 hover:text-white"
-                      }`}
-                    onClick={() => setIsMobileMenuOpen(false)}
+              {navLinks.map((link, i) => {
+                const isActive = pathname === link.href;
+                return (
+                  <motion.div
+                    key={link.name}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.1 }}
                   >
-                    {link.name}
-                  </Link>
-                </motion.div>
-              ))}
+                    <Link
+                      href={link.href}
+                      className={`text-2xl font-bold transition-colors ${isActive ? "text-[#d148cf]" : "text-white/60 hover:text-white"
+                        }`}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {link.name}
+                    </Link>
+                  </motion.div>
+                );
+              })}
 
               <motion.div
                 initial={{ opacity: 0 }}
@@ -224,16 +241,20 @@ export function Navbar() {
               >
                 <h4 className="text-[13px] font-bold text-white/40 uppercase tracking-widest mb-6">Pages</h4>
                 <div className="grid grid-cols-2 gap-x-6 gap-y-4">
-                  {pagesData[0].links.concat(pagesData[1].links).map((link, idx) => (
-                    <Link
-                      key={idx}
-                      href={link.href}
-                      className="text-[16px] text-white/70 hover:text-[#d148cf] py-2"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      {link.name}
-                    </Link>
-                  ))}
+                  {pagesData[0].links.concat(pagesData[1].links).map((link, idx) => {
+                    const isActive = pathname === link.href;
+                    return (
+                      <Link
+                        key={idx}
+                        href={link.href}
+                        className={`text-[16px] transition-colors py-2 ${isActive ? "text-[#d148cf]" : "text-white/70 hover:text-[#d148cf]"
+                          }`}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        {link.name}
+                      </Link>
+                    );
+                  })}
                 </div>
               </motion.div>
 

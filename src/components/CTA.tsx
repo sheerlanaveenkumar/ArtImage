@@ -3,11 +3,12 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Sparkle } from "lucide-react";
 import { useState } from "react";
+import Image from "next/image";
 
 const badgeText = "Let's Get Start";
-const h2Line1   = "Bring Your Creative Design Dreams";
-const h2Line2   = "to Life with the Power of AI";
-const pText     = "Let's AI brilliantly transform your unique thoughts into your artwork. Create something truly amazing today.";
+const h2Line1 = "Bring Your Creative Design Dreams";
+const h2Line2 = "to Life with the Power of AI";
+const pText = "Let's AI brilliantly transform your unique thoughts into your artwork. Create something truly amazing today.";
 
 function AnimatedText({
   text,
@@ -41,10 +42,10 @@ function AnimatedText({
 
 // Delays: badge → h2 line1 → h2 line2 → p
 const badgeDelay = 0;
-const h2L1Delay  = 0.3;
-const h2L2Delay  = h2L1Delay + h2Line1.length * 0.02 + 0.05;
-const pDelay     = h2L2Delay + h2Line2.length * 0.02 + 0.08;
-const btnDelay   = pDelay + pText.length * 0.02 * 0.3; // don't wait full p, overlap a bit
+const h2L1Delay = 0.3;
+const h2L2Delay = h2L1Delay + h2Line1.length * 0.02 + 0.05;
+const pDelay = h2L2Delay + h2Line2.length * 0.02 + 0.08;
+const btnDelay = pDelay + pText.length * 0.02 * 0.3; // don't wait full p, overlap a bit
 
 export default function CTA() {
   const [isHovered, setIsHovered] = useState(false);
@@ -54,33 +55,16 @@ export default function CTA() {
       <div className="max-w-7xl mx-auto">
         <div className="relative overflow-hidden rounded-[32px] p-12 md:p-24 text-center border border-white/5">
 
-          {/* ── Base gradient: #1e0f4a → #3b1f8c → #6d28d9 → #9333ea → #c026d3 ── */}
-          <div
-            className="absolute inset-0"
-            style={{
-              background: "linear-gradient(125deg, #1e0f4a 0%, #3b1f8c 25%, #6d28d9 50%, #9333ea 72%, #c026d3 100%)",
-            }}
-          />
-
-          {/* ── Pink glow blob — bottom right corner ── */}
-          <div
-            className="absolute bottom-[-60px] right-[-60px] w-[380px] h-[380px] rounded-full pointer-events-none"
-            style={{ background: "radial-gradient(circle, #c026d3 0%, #c026d380 30%, transparent 70%)" }}
-          />
-
-          {/* ── Pink glow blob — top left corner ── */}
-          <div
-            className="absolute top-[-60px] left-[-60px] w-[340px] h-[340px] rounded-full pointer-events-none"
-            style={{ background: "radial-gradient(circle, #c026d3 0%, #c026d370 30%, transparent 70%)" }}
-          />
-
-          {/* Grainy texture overlay */}
-          <div
-            className="absolute inset-0 opacity-25 mix-blend-overlay pointer-events-none"
-            style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
-            }}
-          />
+          {/* ── Background Image ── */}
+          <div className="absolute inset-0 pointer-events-none">
+            <Image
+              src="/CTA-BG.png"
+              alt="CTA Background"
+              fill
+              className="object-cover"
+              priority
+            />
+          </div>
 
           {/* Grid lines — visible only in center, fully fades at all 4 corners */}
           <div
@@ -137,52 +121,24 @@ export default function CTA() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: btnDelay }}
             >
-              <motion.button
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
-                className="relative flex items-center gap-2 px-8 py-4 rounded-full text-[17px] font-bold overflow-hidden shadow-xl"
-              >
-                {/* White bg default */}
-                <div className={`absolute inset-0 bg-white transition-opacity duration-500 ${isHovered ? "opacity-0" : "opacity-100"}`} />
-                {/* Gradient on hover */}
-                <div className={`absolute inset-0 transition-opacity duration-500 ${isHovered ? "opacity-100" : "opacity-0"}`}
-                  style={{ background: "linear-gradient(to right, #d946ef, #6366f1)" }} />
-
-                <div className={`relative z-10 flex items-center gap-2 transition-colors duration-500 ${isHovered ? "text-white" : "text-black"}`}>
-                  <AnimatePresence>
-                    {isHovered && (
-                      <motion.span
-                        initial={{ width: 0, opacity: 0, x: -10 }}
-                        animate={{ width: "auto", opacity: 1, x: 0 }}
-                        exit={{ width: 0, opacity: 0, x: -10 }}
-                        transition={{ duration: 0.3 }}
-                        className="flex items-center"
-                      >
-                        <Sparkle size={20} className="fill-current" />
-                      </motion.span>
-                    )}
-                  </AnimatePresence>
-
-                  Get Started Now
-
-                  <AnimatePresence>
-                    {!isHovered && (
-                      <motion.span
-                        initial={{ width: "auto", opacity: 1 }}
-                        exit={{ width: 0, opacity: 0, x: 10 }}
-                        transition={{ duration: 0.3 }}
-                        className="flex items-center"
-                      >
-                        ✦
-                      </motion.span>
-                    )}
-                  </AnimatePresence>
+              <button className="group relative w-full flex items-center justify-center h-[56px] rounded-full overflow-hidden transition-all duration-700 ease-in-out border border-white/30">
+                {/* White Background — default */}
+                <div className="absolute inset-0 bg-white transition-opacity duration-700 group-hover:opacity-0" />
+                {/* Gradient slides in on hover */}
+                <div className="absolute inset-0 bg-gradient-to-r from-[#dd429d] to-[#485cfb] translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-700 ease-in-out" />
+                <div className="relative z-10 flex items-center justify-center gap-2 px-6">
+                  <div className="absolute -left-2 opacity-0 -translate-x-4 transition-all duration-700 group-hover:opacity-100 group-hover:translate-x-6">
+                    <Image src="/images/button-icon-1.svg" alt="Spark" width={14} height={14} />
+                  </div>
+                  <span className="text-[15px] font-bold text-black transition-all duration-700 group-hover:text-white group-hover:translate-x-4 whitespace-nowrap">
+                    Get Started Now
+                  </span>
+                  <div className="opacity-100 transition-all duration-700 group-hover:opacity-0 group-hover:translate-x-4">
+                    <Image src="/images/button-icon-3.svg" alt="Spark" width={14} height={14} />
+                  </div>
                 </div>
-              </motion.button>
+              </button>
             </motion.div>
-
           </div>
         </div>
       </div>

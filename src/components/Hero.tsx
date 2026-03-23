@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
+import { ArrowRight, Play } from "lucide-react";
 import Image from "next/image";
 import { useRef } from "react";
 
@@ -51,9 +52,17 @@ export function Hero() {
       </div>
 
       {/* ── Glow ── */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[300px] sm:w-[500px] md:w-[800px] h-[200px] sm:h-[300px] md:h-[400px] bg-purple-600/30 blur-[80px] sm:blur-[120px] rounded-full z-0" />
+      <div className="absolute top-[372px] left-1/2 -translate-x-1/2 w-[1152px] h-[576px] z-0 pointer-events-none opacity-35">
+        <Image
+          src="/images/Gradient+Blur.png"
+          alt="Glow background"
+          fill
+          className="object-contain"
+          priority
+        />
+      </div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+      <div className="container mx-auto pt-10 px-4 sm:px-6 lg:px-8 relative z-10 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -66,8 +75,10 @@ export function Hero() {
             max-w-xs sm:max-w-2xl md:max-w-4xl mx-auto
             leading-[1.1]
           ">
-            Create Better Social Media Content — Faster with AI <br />
-            {/* <span className="gradient-text">Content — Faster with AI</span> */}
+            Create Better Social Media Content -
+            <span className="ml-2 inline-block w-fit bg-gradient-to-r from-[#d148cf] via-[#a020f0] to-[#7e007e] bg-clip-text text-transparent">
+              Faster with AI
+            </span>
           </h1>
 
           {/* ── Subtitle ── */}
@@ -92,26 +103,42 @@ export function Hero() {
           </p> */}
 
           {/* ── Search Bar ── */}
-          <div className="max-w-xs sm:max-w-sm md:max-w-[410px] mx-auto mb-10 sm:mb-16 relative px-2 sm:px-0">
-            <div className="bg-white rounded-full p-1 sm:p-1.5 flex items-center shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] border-none transition-all">
-              <input
-                type="text"
-                placeholder="Type what you want to see.."
-                className="
-                  flex-1 bg-transparent border-none focus:outline-none
-                  px-4 sm:px-6 text-black placeholder:text-gray-400
-                  text-xs sm:text-base font-medium
-                  min-w-0
-                "
-              />
-              <div className="btn-generate-wrapper shrink-0">
-                <button className="btn-generate-inner text-xs sm:text-base px-5 sm:px-8 h-9 sm:h-11">
-                  Generate
-                </button>
-              </div>
+          <div className="mx-auto mb-10 sm:mb-16 px-2 sm:px-0 max-w-[320px] md:max-w-[520px]">
+            <div className="flex flex-col md:flex-row gap-4">
+
+              {/* Primary Button */}
+              <button className="
+      flex-1 w-full h-14 sm:h-12
+      rounded-full
+      flex items-center justify-center
+      text-sm sm:text-base font-medium
+      text-white
+      bg-gradient-to-r from-[#d148cf] to-[#5b6df9]
+      transition-all duration-300
+      whitespace-nowrap
+    ">
+                Start Creating for Free
+                <ArrowRight className="w-4 h-8 ml-2" />
+              </button>
+
+              {/* Secondary Button */}
+              <button className="
+      flex-1 w-full h-14 sm:h-12
+      rounded-full
+      flex items-center justify-center
+      text-sm sm:text-base font-medium
+      text-white/80
+      border border-white/20
+      bg-white/5 backdrop-blur-md
+      transition-all duration-300
+      whitespace-nowrap
+    ">
+                <Play className="w-4 h-8 mr-2" />
+                See How It Works
+              </button>
+
             </div>
           </div>
-
           {/* ── Cards + Mockup ── */}
           <div className="relative max-w-xs sm:max-w-2xl md:max-w-4xl lg:max-w-5xl mx-auto [transform-style:preserve-3d]">
 
@@ -129,10 +156,9 @@ export function Hero() {
                 initial={{ opacity: 0, rotateY: 90, x: -50 }}
                 animate={{ opacity: 1, rotateY: -15, x: 0 }}
                 transition={{ duration: 1, delay: 0.4 }}
-                className="absolute -top-[15%] -left-[20%] w-60 xl:w-72 h-72 xl:h-80 rounded-2xl overflow-hidden shadow-2xl"
+                className="absolute -top-[15%] -left-[18%] w-52 xl:w-52 h-52 xl:h-52 rounded-2xl overflow-hidden shadow-2xl"
               >
-                <Image src="/images/vr1.png" alt="Hero Card VR" fill className="object-contain" />
-                {/* <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/30 pointer-events-none" /> */}
+                <Image src="/images/hero/robo.svg" alt="Hero Card VR" fill className="object-contain" />
               </motion.div>
 
               {/* Top Right — Bird */}
@@ -146,10 +172,9 @@ export function Hero() {
                 initial={{ opacity: 0, rotateY: -90, x: 50 }}
                 animate={{ opacity: 1, rotateY: 15, x: 0 }}
                 transition={{ duration: 1, delay: 0.5 }}
-                className="absolute -top-[15%] -right-[20%] w-60 xl:w-72 h-72 xl:h-80 rounded-2xl overflow-hidden shadow-2xl"
+                className="absolute -top-[15%] -right-[18%] w-52 xl:w-52 h-52 xl:h-52 rounded-2xl overflow-hidden shadow-2xl"
               >
-                <Image src="/images/vr2.png" alt="Hero Card Bird" fill className="object-contain" />
-                {/* <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/30 pointer-events-none" /> */}
+                <Image src="/images/hero/roboleft.svg" alt="Hero Card Bird" fill className="object-contain" />
               </motion.div>
 
               {/* Bottom Left — Tree */}
@@ -163,10 +188,9 @@ export function Hero() {
                 initial={{ opacity: 0, rotateY: 90, x: -30 }}
                 animate={{ opacity: 1, rotateY: -10, x: 0 }}
                 transition={{ duration: 1, delay: 0.6 }}
-                className="absolute top-[55%] -left-[22%] w-52 xl:w-64 h-72 xl:h-80 rounded-2xl overflow-hidden shadow-2xl"
+                className="absolute top-[55%] -left-[22%] w-52 xl:w-52 h-52 xl:h-52 rounded-2xl overflow-hidden shadow-2xl"
               >
-                <Image src="/images/bottomright1.png" alt="Hero Card Tree" fill className="object-contain" />
-                {/* <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/30 pointer-events-none" /> */}
+                <Image src="/images/hero/oldman.svg" alt="Hero Card Tree" fill className="object-contain" />
               </motion.div>
 
               {/* Bottom Right — Fire */}
@@ -180,10 +204,9 @@ export function Hero() {
                 initial={{ opacity: 0, rotateY: -90, x: 30 }}
                 animate={{ opacity: 1, rotateY: 12, x: 0 }}
                 transition={{ duration: 1, delay: 0.7 }}
-                className="absolute top-[60%] -right-[18%] w-56 xl:w-72 h-72 xl:h-84 rounded-2xl overflow-hidden shadow-2xl"
+                className="absolute top-[60%] -right-[18%] w-52 xl:w-52 h-52 xl:h-52 rounded-2xl overflow-hidden shadow-2xl"
               >
-                <Image src="/images/brain1.png" alt="Hero Card Fire" fill className="object-contain" />
-                {/* <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/30 pointer-events-none" /> */}
+                <Image src="/images/hero/brain.svg" alt="Hero Card Fire" fill className="object-contain" />
               </motion.div>
             </div>
 
@@ -204,25 +227,25 @@ export function Hero() {
               {/* Inner clip wrapper */}
               <div className="rounded-[calc(1.5rem-2px)] sm:rounded-[calc(1.75rem-2px)] overflow-hidden relative">
                 <Image
-                  src="/images/heromockup1.png"
+                  src="/images/hero/dashboard.svg"
                   alt="Artimg Platform Mockup"
-                  width={1200}
-                  height={600}
+                  width={780}
+                  height={400}
                   className="w-full h-auto block"
                   priority
                 />
                 {/* Inner glass sheen */}
-                <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-[inherit] pointer-events-none" />
+                {/* <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-[inherit] pointer-events-none" /> */}
               </div>
             </motion.div>
 
             {/* ── Mobile floating cards (sm–md) shown below mockup ── */}
             <div className="flex justify-center gap-3 mt-6 lg:hidden sm:gap-4">
               {[
-                { src: "/images/hero_card_vr.png", alt: "VR" },
-                { src: "/images/hero_card_bird.png", alt: "Bird" },
-                { src: "/images/hero_card_tree.png", alt: "Tree" },
-                { src: "/images/hero_card_fire.png", alt: "Fire" },
+                { src: "/images/hero/robo.svg", alt: "VR" },
+                { src: "/images/hero/roboleft.svg", alt: "Bird" },
+                { src: "/images/hero/oldman.svg", alt: "Tree" },
+                { src: "/images/hero/brain.svg", alt: "Fire" },
               ].map((card, i) => (
                 <motion.div
                   key={card.alt}

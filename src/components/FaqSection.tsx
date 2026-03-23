@@ -7,9 +7,9 @@ import Image from "next/image";
 
 const sliderImages = [
   "/images/faqs/faq1.png",
-  "/images/gallery/dreamscape.png",
-  "/images/gallery/crystal.png",
-  "/images/gallery/phantom.png",
+  "/images/faqs/faq2.svg",
+  "/images/faqs/faq3.svg",
+  "/images/faqs/faq4.svg",
 ];
 
 const SLIDE_INTERVAL = 2500;
