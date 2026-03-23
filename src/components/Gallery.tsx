@@ -6,7 +6,7 @@ import { motion, useInView, AnimatePresence } from "framer-motion";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
-type Category = "All" | "Landscapes" | "Abstract" | "Photography" | "Anime Art" | "3D Render" | "Gaming";
+type Category = "All" | "Startups" | "E-commerce" | "Personal Brand" | "Agencies" | "Creators";
 
 interface GalleryItem {
   id: number;
@@ -24,185 +24,183 @@ const BASE = "https://cdn.prod.website-files.com/685293486d80eb34c60ada80";
 const galleryItems: GalleryItem[] = [
   {
     id: 1,
-    title: "Ethereal Dreamscape",
-    category: ["Landscapes", "All"],
-    src: `${BASE}/68590e6685b16060f6e5f482_gallery-image-1.webp`,
+    title: "Brand Launch",
+    category: ["Startups", "All"],
+    src: `/images/gallery/neon.png`,
     span: "normal",
   },
   {
     id: 2,
-    title: "Neon Pulse",
-    category: ["Abstract", "All"],
-    src: `${BASE}/68590e66642202cd2db533d8_gallery-image-2.webp`,
+    title: "Client Campaign",
+    category: ["E-commerce", "All"],
+    src: `/images/gallery/dreamscape.png`,
     span: "tall",
   },
   {
     id: 3,
-    title: "Crystal Veil",
-    category: ["Photography", "All"],
-    src: `${BASE}/68590e6695788e6183076a29_gallery-image-3.webp`,
+    title: "Personal Voice",
+    category: ["Personal Brand", "All"],
+    src: `/images/gallery/crystal.png`,
     span: "normal",
   },
   {
     id: 4,
-    title: "Phantom Bloom",
-    category: ["Abstract", "3D Render", "All"],
-    src: `${BASE}/68590e66b8ad3fbf526902e2_gallery-image-6.webp`,
+    title: "Product Spotlight",
+    category: ["E-commerce", "Creators", "All"],
+    src: `/images/gallery/phantom.png`,
     span: "normal",
   },
   {
     id: 5,
-    title: "Shadow Realm",
-    category: ["Anime Art", "Gaming", "All"],
-    src: `${BASE}/68590e66522886627e39d593_gallery-image-5.webp`,
+    title: "Content Calendar",
+    category: ["Agencies", "Agencies", "All"],
+    src: `/images/gallery/shadow.png`,
     span: "tall",
   },
   {
     id: 6,
-    title: "Midnight Serenity",
-    category: ["Landscapes", "Photography", "Gaming", "All"],
-    src: `${BASE}/68590e661a0cdf1794ade70d_gallery-image-7.webp`,
+    title: "Growth Strategy",
+    category: ["Startups", "Personal Brand", "Agencies", "All"],
+    src: `/images/gallery/midnight.png`,
     span: "normal",
   },
   {
     id: 7,
-    title: "Quantum Drift",
-    category: ["3D Render", "Gaming", "All"],
-    src: `${BASE}/68590e674de83423bc0cac32_gallery-image-8.webp`,
+    title: "Viral Hook",
+    category: ["Creators", "Agencies", "All"],
+    src: `/images/gallery/quantum.png`,
     span: "normal",
   },
   {
     id: 8,
-    title: "Stellar Wanderer",
-    category: ["Gaming", "3D Render", "All"],
-    src: `${BASE}/68590e67e89fba8e3d0e83c8_gallery-image-9.webp`,
+    title: "Story Arc",
+    category: ["Agencies", "Creators", "All"],
+    src: `/images/gallery/frozen.png`,
     span: "tall",
   },
   {
     id: 9,
-    title: "Frozen Epoch",
-    category: ["Photography", "Gaming", "All"],
-    src: `${BASE}/68590e68f9f1dd45719aa889_gallery-image-10.webp`,
+    title: "Multi Brand",
+    category: ["Personal Brand", "Agencies", "All"],
+    src: `/images/gallery/stellar.png`,
     span: "normal",
   },
-  {
-    id: 10,
-    title: "Aurora Genesis",
-    category: ["Abstract", "Landscapes", "Gaming", "All"],
-    src: `${BASE}/68590e68940c714f2a50a2da_gallery-image-11.webp`,
-    span: "tall",
-  },
-  {
-    id: 11,
-    title: "Void Walker",
-    category: ["Anime Art", "All"],
-    src: `${BASE}/68590e68b87f24cef355e18b_gallery-image-12.webp`,
-    span: "normal",
-  },
-  {
-    id: 12,
-    title: "Celestial Echo",
-    category: ["Abstract", "Photography", "All"],
-    src: `${BASE}/68590e66b8ad3fbf526902e2_gallery-image-6.webp`,
-    span: "normal",
-  },
-  {
-    id: 13,
-    title: "Cyber Prowess",
-    category: ["All"],
-    src: `${BASE}/68590e661a0cdf1794ade70d_gallery-image-7.webp`,
-    span: "tall",
-  },
-  {
-    id: 14,
-    title: "Robotic Feast",
-    category: ["3D Render", "All"],
-    src: `${BASE}/68590e674de83423bc0cac32_gallery-image-8.webp`,
-    span: "normal",
-  },
-  {
-    id: 15,
-    title: "Verdant Reach",
-    category: ["Landscapes", "All"],
-    src: `${BASE}/68590e6685b16060f6e5f482_gallery-image-1.webp`,
-    span: "normal",
-  },
-  {
-    id: 16,
-    title: "Sunset Spire",
-    category: ["Landscapes", "All"],
-    src: `${BASE}/68590e661a0cdf1794ade70d_gallery-image-7.webp`,
-    span: "normal",
-  },
-  {
-    id: 17,
-    title: "Mistwood Path",
-    category: ["Landscapes", "All"],
-    src: `${BASE}/68590e68f9f1dd45719aa889_gallery-image-10.webp`,
-    span: "normal",
-  },
-  {
-    id: 18,
-    title: "Golden Valley",
-    category: ["Landscapes", "All"],
-    src: `${BASE}/68590e68940c714f2a50a2da_gallery-image-11.webp`,
-    span: "normal",
-  },
-  {
-    id: 19,
-    title: "Cybernetic Bloom",
-    category: ["Abstract", "All"],
-    src: `${BASE}/68590e66b8ad3fbf526902e2_gallery-image-6.webp`,
-    span: "tall",
-  },
-  {
-    id: 20,
-    title: "Neural Network",
-    category: ["Abstract", "All"],
-    src: `${BASE}/68590e66642202cd2db533d8_gallery-image-2.webp`,
-    span: "normal",
-  },
-  {
-    id: 21,
-    title: "Digital Soul",
-    category: ["Abstract", "All"],
-    src: `${BASE}/68590e66b8ad3fbf526902e2_gallery-image-6.webp`,
-    span: "tall",
-  },
-  {
-    id: 22,
-    title: "Prism Void",
-    category: ["Abstract", "All"],
-    src: `${BASE}/68590e68940c714f2a50a2da_gallery-image-11.webp`,
-    span: "normal",
-  },
-  {
-    id: 23,
-    title: "Chrome Echo",
-    category: ["Abstract", "All"],
-    src: `${BASE}/68590e66642202cd2db533d8_gallery-image-2.webp`,
-    span: "normal",
-  },
+  // {
+  //   id: 10,
+  //   title: "Aurora Genesis",
+  //   category: ["E-commerce", "Startups", "Agencies", "All"],
+  //   src: `/images/gallery/aurora.png`,
+  //   span: "tall",
+  // },
+  // {
+  //   id: 11,
+  //   title: "Void Walker",
+  //   category: ["Agencies", "All"],
+  //   src: `/images/gallery/void.png`,
+  //   span: "normal",
+  // },
+  // {
+  //   id: 12,
+  //   title: "Celestial Echo",
+  //   category: ["E-commerce", "Personal Brand", "All"],
+  //   src: `/images/gallery/celestial.png`,
+  //   span: "normal",
+  // },
+  // {
+  //   id: 13,
+  //   title: "Cyber Prowess",
+  //   category: ["All"],
+  //   src: `/images/gallery/cyber.png`,
+  //   span: "tall",
+  // },
+  // {
+  //   id: 14,
+  //   title: "Robotic Feast",
+  //   category: ["Creators", "All"],
+  //   src: `/images/gallery/robotic.png`,
+  //   span: "normal",
+  // },
+  // {
+  //   id: 15,
+  //   title: "Verdant Reach",
+  //   category: ["Startups", "All"],
+  //   src: `/images/gallery/verdant.png`,
+  //   span: "normal",
+  // },
+  // {
+  //   id: 16,
+  //   title: "Sunset Spire",
+  //   category: ["Startups", "All"],
+  //   src: `/images/gallery/sunset.png`,
+  //   span: "normal",
+  // },
+  // {
+  //   id: 17,
+  //   title: "Mistwood Path",
+  //   category: ["Startups", "All"],
+  //   src: `/images/gallery/mistwood.png`,
+  //   span: "normal",
+  // },
+  // {
+  //   id: 18,
+  //   title: "Golden Valley",
+  //   category: ["Startups", "All"],
+  //   src: `/images/gallery/golden.png`,
+  //   span: "normal",
+  // },
+  // {
+  //   id: 19,
+  //   title: "Cybernetic Bloom",
+  //   category: ["E-commerce", "All"],
+  //   src: `/images/gallery/cybernetic.png`,
+  //   span: "tall",
+  // },
+  // {
+  //   id: 20,
+  //   title: "Neural Network",
+  //   category: ["E-commerce", "All"],
+  //   src: `/images/gallery/neural.png`,
+  //   span: "normal",
+  // },
+  // {
+  //   id: 21,
+  //   title: "Digital Soul",
+  //   category: ["E-commerce", "All"],
+  //   src: `/images/gallery/digital.png`,
+  //   span: "tall",
+  // },
+  // {
+  //   id: 22,
+  //   title: "Prism Void",
+  //   category: ["E-commerce", "All"],
+  //   src: `/images/gallery/prism.png`,
+  //   span: "normal",
+  // },
+  // {
+  //   id: 23,
+  //   title: "Chrome Echo",
+  //   category: ["E-commerce", "All"],
+  //   src: `/images/gallery/chrome.png`,
+  //   span: "normal",
+  // },
 ];
 
 const GRID_CONFIG: Record<string, string> = {
   All: "lg:grid-cols-4",
-  Landscapes: "lg:grid-cols-4",
-  Abstract: "lg:grid-cols-4",
-  Photography: "lg:grid-cols-4",
-  "Anime Art": "lg:grid-cols-3",
-  "3D Render": "lg:grid-cols-3",
-  Gaming: "lg:grid-cols-4",
+  Startups: "lg:grid-cols-4",
+  "E-commerce": "lg:grid-cols-4",
+  "Personal Brand": "lg:grid-cols-4",
+  Agencies: "lg:grid-cols-3",
+  Creators: "lg:grid-cols-3",
 };
 
 const CATEGORIES: Category[] = [
   "All",
-  "Landscapes",
-  "Abstract",
-  "Photography",
-  "Anime Art",
-  "3D Render",
-  "Gaming",
+  "Startups",
+  "E-commerce",
+  "Personal Brand",
+  "Agencies",
+  "Creators",
 ];
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
@@ -353,7 +351,7 @@ export default function Gallery() {
             {/* Close Button */}
             <button
               onClick={() => setSelectedIdx(null)}
-              className="absolute top-8 right-8 text-white/70 hover:text-white transition-colors z-[110] p-2 bg-white/5 rounded-full border border-white/10"
+              className="absolute top-8 right-8 text-white/70 hover:text-white transition-colors z-[110] p-2 bg-white/5 rounded-full border border-white/30"
             >
               <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M18 6L6 18M6 6l12 12" />
@@ -366,7 +364,7 @@ export default function Gallery() {
               <button
                 disabled={selectedIdx === 0}
                 onClick={() => setSelectedIdx(selectedIdx - 1)}
-                className={`absolute left-4 md:left-8 p-4 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition-all ${selectedIdx === 0 ? 'opacity-0' : 'opacity-100'}`}
+                className={`absolute left-4 md:left-8 p-4 rounded-full bg-white/5 hover:bg-white/10 border border-white/30 transition-all ${selectedIdx === 0 ? 'opacity-0' : 'opacity-100'}`}
               >
                 <svg className="w-8 h-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M15 18l-6-6 6-6" />
@@ -378,7 +376,7 @@ export default function Gallery() {
                 initial={{ opacity: 0, scale: 0.9, x: 20 }}
                 animate={{ opacity: 1, scale: 1, x: 0 }}
                 transition={{ type: "spring", damping: 25, stiffness: 200 }}
-                className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl border border-white/10"
+                className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl border border-white/30"
               >
                 <Image
                   src={filtered[selectedIdx].src}
@@ -393,7 +391,7 @@ export default function Gallery() {
               <button
                 disabled={selectedIdx === filtered.length - 1}
                 onClick={() => setSelectedIdx(selectedIdx + 1)}
-                className={`absolute right-4 md:right-8 p-4 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition-all ${selectedIdx === filtered.length - 1 ? 'opacity-0' : 'opacity-100'}`}
+                className={`absolute right-4 md:right-8 p-4 rounded-full bg-white/5 hover:bg-white/10 border border-white/30 transition-all ${selectedIdx === filtered.length - 1 ? 'opacity-0' : 'opacity-100'}`}
               >
                 <svg className="w-8 h-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M9 18l6-6-6-6" />
@@ -454,7 +452,7 @@ export default function Gallery() {
             className="flex items-center gap-3 mb-6"
           >
             {/* pill badge */}
-            <span className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.15em] uppercase text-white/50 border border-white/10 bg-white/[0.04] backdrop-blur-sm rounded-full px-4 py-1.5 font-exo">
+            <span className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.15em] uppercase text-white border border-white/30 bg-white/[0.04] backdrop-blur-sm rounded-full px-4 py-2 font-exo">
               {/* <span className="w-1.5 h-1.5 rounded-full bg-pink-500 shadow-[0_0_8px_rgba(236,72,153,0.6)] inline-block" /> */}
               Our Gallery
             </span>
@@ -466,8 +464,14 @@ export default function Gallery() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-white font-bold text-4xl sm:text-5xl lg:text-7xl leading-[1.07] tracking-tighter max-w-[900px] mb-8 font-exo"
           >
-            AI Art And{" "}
-            <span
+            Built for people who <span
+              className="bg-clip-text text-transparent"
+              style={{
+                backgroundImage:
+                  "linear-gradient(90deg, #a78bfa 0%, #7c3aed 50%, #c084fc 100%)",
+              }}
+            >create</span>{" "}
+            {/* <span
               className="bg-clip-text text-transparent"
               style={{
                 backgroundImage:
@@ -475,17 +479,16 @@ export default function Gallery() {
               }}
             >
               Video Gallery
-            </span>
+            </span> */}
           </motion.h2>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.55, delay: 0.2 }}
-            className="text-white/60 text-base md:text-lg leading-relaxed max-w-[650px]"
+            className="text-white text-base md:text-lg leading-relaxed max-w-[650px]"
           >
-            Transform ideas with AI tools designed for unparalleled art and
-            video creation. Create images &amp; videos that mesmerize.
+            Whether you're growing a brand or managing clients, ZunoSync helps you stay consistent without burning out.
           </motion.p>
         </div>
 
@@ -496,16 +499,15 @@ export default function Gallery() {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="flex justify-center mb-16"
         >
-          <div className="inline-flex flex-wrap items-center justify-center gap-3 p-2 bg-white/[0.02] border border-white/5 rounded-[40px] md:rounded-full backdrop-blur-md">
+          <div className="inline-flex flex-wrap items-center justify-center gap-3 p-3 bg-white/[0.02] border border-white/30 rounded-[40px] md:rounded-full backdrop-blur-md">
             {CATEGORIES.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`relative px-6 py-2.5 rounded-full text-sm font-medium tracking-wide transition-all duration-300 outline-none focus-visible:ring-2 focus-visible:ring-violet-500/60 border ${
-                  activeCategory === cat
-                    ? "text-white border-transparent"
-                    : "text-white/50 hover:text-white/80 bg-white/[0.05] border-white/10 hover:border-white/20"
-                }`}
+                className={`relative px-6 py-3.5 rounded-full text-sm font-medium tracking-wide transition-all duration-300 outline-none focus-visible:ring-2 focus-visible:ring-violet-500/60 border ${activeCategory === cat
+                  ? "text-white border-transparent"
+                  : "text-white hover:text-white bg-white/[0.05] border-white/30 hover:border-white/20"
+                  }`}
               >
                 {activeCategory === cat && (
                   <motion.span
@@ -546,7 +548,7 @@ export default function Gallery() {
 
         {/* ── CTA button ── */}
         <div className="flex justify-center mt-16 pb-12">
-          <button className="group relative flex items-center justify-center min-w-[200px] h-[52px] rounded-full overflow-hidden transition-all duration-700 ease-in-out border border-white/10">
+          <button className="group relative flex items-center justify-center min-w-[200px] h-[62px] rounded-full overflow-hidden transition-all duration-700 ease-in-out border border-white/30">
             {/* Base Gradient Background */}
             <div className="absolute inset-0 bg-gradient-to-r from-[#dd429d] to-[#485cfb] transition-opacity duration-700 group-hover:opacity-0" />
 

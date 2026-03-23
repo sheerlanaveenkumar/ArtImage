@@ -6,20 +6,20 @@ import { Plus } from "lucide-react";
 import Image from "next/image";
 
 const sliderImages = [
-  "/images/faqs/faq-helmet.png",
-  "/images/faqs/robo.png",
-  "/images/faqs/scifi.png",
-  "/images/faqs/robo2.png",
+  "/images/faqs/faq1.png",
+  "/images/gallery/dreamscape.png",
+  "/images/gallery/crystal.png",
+  "/images/gallery/phantom.png",
 ];
 
 const SLIDE_INTERVAL = 2500;
 
 const faqs = [
-  { question: "What is Artimg?", answer: "Artimg is a powerful platform that helps you generate high-quality images using advanced artificial intelligence in seconds. Whether you're a designer, marketer, or creator, our tools streamline your creative workflow." },
-  { question: "Do I Need an Account to Use It?", answer: "No signup, no friction. You can start generating images immediately. Our platform is designed for instant creativity without the hassle of long registration processes." },
-  { question: "Can I Use the Images Commercially?", answer: "Yes, you have full commercial rights to the images you generate. They are yours to use for your business, social media, or any other commercial project." },
-  { question: "What Kind of Images Can I Create?", answer: "From photorealistic portraits to abstract digital art, Artimg supports a wide range of styles. Simply type your prompt and watch the magic happen." },
-  { question: "Can I Download and Export The Images", answer: "Absolutely. All generated images can be downloaded in high resolution, suitable for both digital and print media applications." },
+  { question: "What is ZunoSync?", answer: "ZunoSync is an AI-powered social media content generator that helps you create captions, hashtags, and content ideas quickly using simple prompts." },
+  { question: "Who is it for?", answer: "It's designed for marketers, creators, businesses, and agencies who want faster and better content creation." },
+  { question: "Do i need writing skills?", answer: "No. ZunoSync does the heavy lifting — you just guide it." },
+  { question: "Can i use it for multiple platforms?", answer: "Yes! ZunoSync generates optimized content for Instagram, LinkedIn, Twitter, and more." },
+  { question: "Is there a free plan?", answer: "Yes, our Starter plan lets you try ZunoSync with 50 AI generations per month at no cost." },
 ];
 
 const h2Text = "Frequently Asked Questions";
@@ -65,35 +65,35 @@ export default function FaqSection() {
         <div className="mb-16">
           <motion.span initial={{ opacity: 0, y: -10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
             transition={{ duration: 0.45 }}
-            className="px-5 py-2 border border-white/10 rounded-full text-[13px] font-bold uppercase tracking-widest text-white/50 mb-6 inline-block">
+            className="px-5 py-2 border border-white/30 rounded-full text-[13px] font-bold uppercase tracking-widest text-white mb-6 inline-block">
             FAQ
           </motion.span>
 
           <div className="flex flex-row items-center justify-between gap-6 mb-6 flex-wrap">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight font-exo">
               <AnimatedText text={h2Text} startDelay={h2Delay} />
             </h2>
-            <motion.button 
-              initial={{ opacity: 0, x: -50 }} 
-              whileInView={{ opacity: 1, x: 0 }} 
+            <motion.button
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: h2Delay + 0.15, ease: "easeOut" }}
               className="relative group p-[1px] rounded-full overflow-hidden bg-gradient-to-r from-[#d946ef] to-[#6366f1] transition-transform hover:scale-105"
             >
               <div className="relative flex items-center gap-2 px-6 py-3 rounded-full bg-transparent group-hover:bg-white transition-all duration-300">
                 <div className="relative w-3.5 h-3.5">
-                  <Image 
-                    src="/images/button-icon-1.svg" 
-                    alt="icon" 
-                    width={14} 
-                    height={15} 
+                  <Image
+                    src="/images/button-icon-1.svg"
+                    alt="icon"
+                    width={14}
+                    height={15}
                     className="absolute inset-0 transition-opacity duration-300 group-hover:opacity-0"
                   />
-                  <Image 
-                    src="/images/button-icon-2.svg" 
-                    alt="icon" 
-                    width={14} 
-                    height={15} 
+                  <Image
+                    src="/images/button-icon-2.svg"
+                    alt="icon"
+                    width={14}
+                    height={15}
                     className="absolute inset-0 transition-opacity duration-300 opacity-0 group-hover:opacity-100"
                   />
                 </div>
@@ -149,7 +149,7 @@ export default function FaqSection() {
               return (
                 <motion.div key={index} initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
                   transition={{ duration: 0.55, delay: index * 0.12, ease: "easeOut" }}
-                  className={`border border-white/5 rounded-[24px] overflow-hidden transition-all duration-300 ${isOpen ? "bg-white/[0.04] border-white/10 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)]" : "bg-white/[0.02] hover:bg-white/[0.04]"}`}>
+                  className={`border border-white/30 rounded-[24px] overflow-hidden transition-all duration-300 ${isOpen ? "bg-white/[0.04] border-white/30 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)]" : "bg-white/[0.02] hover:bg-white/[0.04]"}`}>
                   <button onClick={() => toggle(index)} className="w-full flex justify-between items-center p-6 md:p-8 text-left">
                     <span className="text-lg md:text-xl font-bold tracking-tight text-white/90">Q. {faq.question}</span>
                     <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${isOpen ? "bg-white text-black rotate-45" : "bg-white/10 text-white"}`}>

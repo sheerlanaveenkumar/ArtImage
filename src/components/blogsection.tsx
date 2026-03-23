@@ -78,13 +78,13 @@ export default function BlogSection() {
             whileInView={{ opacity: 1, filter: "blur(0px)", y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: badgeDelay }}
-            className="px-5 py-2 border border-white/10 rounded-full text-[13px] font-bold uppercase tracking-widest text-white/50 mb-8 inline-block"
+            className="px-5 py-2 border border-white/30 rounded-full text-[13px] font-bold uppercase tracking-widest text-white mb-8 inline-block"
           >
             {badgeText}
           </motion.span>
 
           {/* H2 — letter by letter + blur */}
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight font-exo">
             <AnimatedText text={h2Text} startDelay={h2Delay} />
           </h2>
 
@@ -108,7 +108,7 @@ export default function BlogSection() {
               whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: i * 0.2, ease: "easeOut" }}
-              className="group relative bg-[#0A0A0A] border border-white/5 rounded-[32px] overflow-hidden flex flex-col hover:border-white/10 transition-all duration-500 shadow-2xl"
+              className="group relative bg-[#0A0A0A] border border-white/5 rounded-[32px] overflow-hidden flex flex-col hover:border-white/30 transition-all duration-500 shadow-2xl"
             >
               {/* Image */}
               <div className="relative aspect-[12/10] overflow-hidden">
@@ -130,7 +130,7 @@ export default function BlogSection() {
                   whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.3 + i * 0.2 }}
-                  className="w-fit px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-[13px] font-medium text-white/70 mb-6"
+                  className="w-fit px-4 py-1.5 bg-white/5 border border-white/30 rounded-full text-[13px] font-medium text-white/70 mb-6"
                 >
                   {blog.category}
                 </motion.span>

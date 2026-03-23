@@ -34,7 +34,7 @@ export function Footer() {
             {/* Logo */}
             <Link href="/" className="flex items-center gap-3 w-fit">
               <Image
-                src="/images/logo.png"
+                src="/images/newlogo.png"
                 alt="Artimg"
                 width={130}
                 height={36}
@@ -65,7 +65,7 @@ export function Footer() {
                   className="
                     w-9 h-9 flex items-center justify-center
                     rounded-full
-                    border border-white/10
+                    border border-white/30
                     text-muted-foreground hover:text-white
                     hover:border-white/30
                     transition-colors duration-200

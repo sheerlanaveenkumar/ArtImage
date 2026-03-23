@@ -68,7 +68,7 @@ export function Navbar() {
           {/* Logo - Added left padding */}
           <Link href="/" className="flex items-center pl-4 lg:pl-10">
             <Image
-              src="/images/logo.png"
+              src="/images/newlogo.png"
               alt="Artimg"
               width={130}
               height={36}
@@ -114,7 +114,7 @@ export function Navbar() {
                       duration: 0.4,
                       ease: [0.23, 1, 0.32, 1]
                     }}
-                    className="absolute top-full left-1/2 -translate-x-1/2 mt-5 w-[540px] bg-[#1a181c]/95 backdrop-blur-2xl border border-white/10 rounded-[28px] p-10 shadow-3xl z-50 overflow-hidden"
+                    className="absolute top-full left-1/2 -translate-x-1/2 mt-5 w-[540px] bg-[#1a181c]/95 backdrop-blur-2xl border border-white/30 rounded-[28px] p-10 shadow-3xl z-50 overflow-hidden"
                   >
                     <div className="grid grid-cols-2 gap-x-16 gap-y-12">
                       {pagesData.map((section, idx) => (
@@ -151,7 +151,7 @@ export function Navbar() {
 
           {/* Action Buttons - Added right padding */}
           <div className="flex items-center gap-4 pr-4 lg:pr-10">
-            <button className="hidden md:flex group relative items-center justify-center max-w-[180px] h-[48px] rounded-full overflow-hidden transition-all duration-700 ease-in-out border border-white/10">
+            <button className="hidden md:flex group relative items-center justify-center max-w-[180px] h-[48px] rounded-full overflow-hidden transition-all duration-700 ease-in-out border border-white/30">
               {/* Base Gradient Background */}
               <div className="absolute inset-0 bg-gradient-to-r from-[#dd429d] to-[#485cfb] transition-opacity duration-700 group-hover:opacity-0" />
 
@@ -220,7 +220,7 @@ export function Navbar() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.3 }}
-                className="border-t border-white/10 pt-8"
+                className="border-t border-white/30 pt-8"
               >
                 <h4 className="text-[13px] font-bold text-white/40 uppercase tracking-widest mb-6">Pages</h4>
                 <div className="grid grid-cols-2 gap-x-6 gap-y-4">

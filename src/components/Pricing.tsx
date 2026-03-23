@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, X } from "lucide-react";
+import Image from "next/image";
 
 const plans = [
   {
@@ -72,7 +73,7 @@ export default function Pricing() {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="px-4 py-1 border border-gray-700 rounded-full text-sm"
+              className="px-4 py-2 border border-gray-700 rounded-full text-lg"
             >
               Our Pricing Plans
             </motion.span>
@@ -156,74 +157,93 @@ export default function Pricing() {
         </div>
 
         {/* Cards Grid */}
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-6">
           {plans.map((plan, i) => (
             <motion.div
               key={plan.name}
-              // Entrance: slide in from left, staggered
-              initial={{ opacity: 0, x: -120 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{
-                duration: 0.6,
+                duration: 0.5,
                 delay: 0.6 + i * 0.15,
                 ease: "easeOut",
               }}
-              // Hover: lift up
-              whileHover={{ y: -10 }}
-              className="border border-gray-800 rounded-2xl p-6 bg-gradient-to-b from-[#0f0f0f] to-black"
+              className="flex flex-col rounded-3xl border border-white/30 p-8"
+              style={{ background: "#111113" }}
             >
-              {/* Top Row */}
-              <div className="flex justify-between items-center mb-4">
-                <span className="px-3 py-1 bg-gray-800 rounded-full text-sm">
+              {/* Top Row: Plan name badge + Price */}
+              <div className="flex justify-between items-center mb-5">
+                <span
+                  className="px-5 py-2 rounded-full text-base font-semibold text-white"
+                  style={{ background: "#1e1c22" }}
+                >
                   {plan.name}
                 </span>
-
-                <div className="text-xl font-semibold">
+                <div className="flex items-baseline gap-1">
                   <AnimatePresence mode="wait">
                     <motion.span
                       key={billing + plan.name}
-                      initial={{ opacity: 0, y: -10 }}
+                      initial={{ opacity: 0, y: -8 }}
                       animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 10 }}
-                      transition={{ duration: 0.25 }}
-                      className="inline-block"
+                      exit={{ opacity: 0, y: 8 }}
+                      transition={{ duration: 0.2 }}
+                      className="text-4xl font-extrabold text-white"
                     >
                       ${billing === "monthly" ? plan.monthly : plan.yearly}
                     </motion.span>
                   </AnimatePresence>
-                  <span className="text-sm text-gray-400">
+                  <span className="text-base text-gray-400 font-normal">
                     /{billing === "monthly" ? "month" : "year"}
                   </span>
                 </div>
               </div>
 
-              <p className="text-gray-400 mb-6">
+              {/* Description */}
+              <p className="text-white text-lg text-base leading-relaxed mb-6">
                 Essential features for freelancer and small teams.
               </p>
 
-              <div className="border-t border-gray-800 my-6" />
+              {/* Divider */}
+              <div className="border-t border-white/30 mb-10" />
 
-              {/* Features */}
-              <ul className="space-y-4 mb-8">
+              {/* Feature List */}
+              <ul className="space-y-4 mb-10 flex-1">
                 {plan.features.map((f, idx) => (
-                  <li key={idx} className="flex items-center gap-3">
+                  <li key={idx} className="flex items-center gap-4">
                     <span
-                      className={`w-6 h-6 flex items-center justify-center rounded-full ${
-                        f.available
-                          ? "bg-purple-600"
-                          : "bg-gray-700 text-gray-400"
-                      }`}
+                      className={`w-6 h-6 flex-shrink-0 flex items-center justify-center rounded-full ${f.available ? "bg-[#2a2a2a]" : "bg-[#2a2a2a]"
+                        }`}
                     >
-                      {f.available ? <Check size={14} /> : <X size={14} />}
+                      {f.available ? (
+                        <Check size={13} className="text-white" />
+                      ) : (
+                        <X size={13} className="text-gray-500" />
+                      )}
                     </span>
-                    <span className="text-gray-300">{f.text}</span>
+                    <span className={`text-base text-lg ${f.available ? "text-white" : "text-gray-500"}`}>
+                      {f.text}
+                    </span>
                   </li>
                 ))}
               </ul>
 
               {/* CTA Button */}
-              <button className="w-full py-3 rounded-full font-medium bg-gray-200 text-black hover:text-white hover:bg-gradient-to-r hover:from-pink-500 hover:to-purple-500 transition-all duration-300">
-                Get Started Now ✦
+              <button className="group relative w-full flex items-center justify-center h-[56px] rounded-full overflow-hidden transition-all duration-700 ease-in-out border border-white/30">
+                {/* White Background — default */}
+                <div className="absolute inset-0 bg-white transition-opacity duration-700 group-hover:opacity-0" />
+                {/* Gradient slides in on hover */}
+                <div className="absolute inset-0 bg-gradient-to-r from-[#dd429d] to-[#485cfb] translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-700 ease-in-out" />
+                <div className="relative z-10 flex items-center justify-center gap-2 px-6">
+                  <div className="absolute -left-2 opacity-0 -translate-x-4 transition-all duration-700 group-hover:opacity-100 group-hover:translate-x-6">
+                    <Image src="/images/button-icon-2.svg" alt="Spark" width={14} height={14} />
+                  </div>
+                  <span className="text-[15px] font-bold text-black transition-all duration-700 group-hover:text-white group-hover:translate-x-4 whitespace-nowrap">
+                    Get Started Now
+                  </span>
+                  <div className="opacity-100 transition-all duration-700 group-hover:opacity-0 group-hover:translate-x-4">
+                    <Image src="/images/button-icon-1.svg" alt="Spark" width={14} height={14} />
+                  </div>
+                </div>
               </button>
             </motion.div>
           ))}

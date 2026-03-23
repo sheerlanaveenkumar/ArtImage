@@ -18,13 +18,13 @@ export function Logos() {
   return (
     <section className="py-20 relative overflow-hidden bg-black">
       <div className="container mx-auto px-4 mb-12 text-center">
-        <p className="text-sm font-medium text-muted-foreground uppercase tracking-widest">
+        <p className="text-lg font-medium text-muted-foreground uppercase tracking-widest text-white">
           Trusted by Brands and Creators
         </p>
       </div>
 
       {/* Centered Wrapper */}
-      <div className="max-w-5xl mx-auto relative overflow-hidden">
+      <div className="max-w-[84rem] mx-auto relative overflow-hidden">
         <div className="relative flex overflow-hidden">
           <motion.div
             className="flex whitespace-nowrap"
@@ -42,7 +42,7 @@ export function Logos() {
                 key={index}
                 className="flex items-center justify-center px-10 md:px-16"
               >
-                <div className="relative h-10 w-32 md:h-12 md:w-40 opacity-50 hover:opacity-100 transition-opacity duration-300">
+                <div className="relative h-10 w-32 md:h-12 md:w-40 opacity-100 hover:opacity-100 transition-opacity duration-300">
                   <Image
                     src={logo.src}
                     alt={logo.name}

@@ -20,7 +20,7 @@ const exo = Exo({
 });
 
 export const metadata: Metadata = {
-  title: "Artimg - Generate Realistic Images with AI",
+  title: "ZunoSync",
   description: "Experience the power of AI image generation. Artimg allows you to create stunning, realistic images in seconds.",
 };
 
@@ -32,8 +32,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={cn("dark", inter.variable, exo.variable)}>
       <body
-        className={`${plusJakartaSans.variable} ${inter.variable} ${exo.variable} antialiased font-inter`}
+        className={`${plusJakartaSans.variable} ${inter.variable} ${exo.variable} antialiased font-exo`}
       >
+
+
+
         {children}
       </body>
     </html>

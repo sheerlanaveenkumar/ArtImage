@@ -4,8 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 const badgeText = "In Numbers";
-const h2Line1 = "Discover key AI";
-const h2Line2 = "tool statistics";
+const h2Text = "Discover key AI tool statistics";
 const pText = "Discover the power of creativity through data! Our AI has generated over 1 million unique images.";
 
 const stats = [
@@ -47,16 +46,15 @@ function AnimatedText({
 }
 
 const h2L1Delay = 0.2;
-const h2L2Delay = h2L1Delay + h2Line1.length * 0.022 + 0.05;
-const pDelay = h2L2Delay + h2Line2.length * 0.022 + 0.08;
+const pDelay = h2L1Delay + h2Text.length * 0.022 + 0.08;
 const btnDelay = pDelay + 0.4;
 
 // ─── Main ─────────────────────────────────────────────────────────────────────
 export function InNumbers() {
   return (
     <section className="py-24 bg-black">
-      <div className="container mx-auto px-6 max-w-6xl">
-        <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_0.9fr] gap-6 items-stretch">
+      <div className="container mx-auto px-6 max-w-[84rem]">
+        <div className="grid grid-cols-1 lg:grid-cols-[1.8fr_0.9fr] gap-6 items-stretch">
 
           {/* ── LEFT CARD ── */}
           <motion.div
@@ -64,36 +62,28 @@ export function InNumbers() {
             whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="relative border border-white/[0.08] rounded-[28px] p-10 md:p-12 overflow-hidden flex flex-col justify-center min-h-[440px]"
+            className="relative border border-[#fcfcfc40] rounded-[14px] p-10 md:p-12 overflow-hidden flex flex-col justify-center min-h-[440px]"
           >
-            {/* BG gradient — lighter purple, warm and rich */}
+            {/* BG gradient — dark top-left to #351F41 bottom-right */}
             <div
               className="absolute inset-0 z-0"
               style={{
-                background:
-                  "linear-gradient(135deg, #1a0e3a 0%, #2d1465 25%, #4a1f8c 50%, #cc3aedff 75%, rgba(179, 122, 217, 1) 100%)",
+                background: "linear-gradient(to bottom right, #0d0912 0%, #1a0f25 45%, #351F41 100%)",
               }}
             />
 
-            {/* Pink glow — bottom right */}
-            <div
-              className="absolute bottom-[-40px] right-[-40px] w-[280px] h-[280px] rounded-full z-0 pointer-events-none"
-              style={{
-                background: "radial-gradient(circle, #b14bf440 0%, #7c3aed20 50%, transparent 70%)",
-              }}
-            />
-
-            {/* Grid lines — fade at corners */}
+            {/* Grid lines — fade in from bottom, visible across the bottom half */}
             <div
               className="absolute inset-0 z-0 pointer-events-none"
               style={{
                 backgroundImage:
-                  "linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)",
-                backgroundSize: "60px 60px",
+                  "linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px)",
+                backgroundSize: "90px 90px",
+                backgroundPosition: "top left",
                 maskImage:
-                  "radial-gradient(ellipse 80% 70% at 50% 60%, black 20%, transparent 100%)",
+                  "linear-gradient(to top, black 0%, black 40%, transparent 80%)",
                 WebkitMaskImage:
-                  "radial-gradient(ellipse 80% 70% at 50% 60%, black 20%, transparent 100%)",
+                  "linear-gradient(to top, black 0%, black 40%, transparent 80%)",
               }}
             />
 
@@ -106,33 +96,30 @@ export function InNumbers() {
                 whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0 }}
-                className="inline-block w-fit px-5 py-2 rounded-full border border-white/10 text-[13px] font-bold text-white/50 uppercase tracking-widest mb-2"
+                className="inline-block w-fit px-4 py-1.5 rounded-full border border-white/30 text-[18px] font-medium text-white mb-2"
               >
                 {badgeText}
               </motion.span>
 
-              {/* H2 — letter by letter, two lines */}
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.1] tracking-tight">
+              {/* H2 — single line */}
+              <h2 className="text-4xl md:text-5xl lg:text-5xl font-bold text-white leading-[1.1] tracking-tight">
                 <span className="block">
-                  <AnimatedText text={h2Line1} startDelay={h2L1Delay} />
-                </span>
-                <span className="block">
-                  <AnimatedText text={h2Line2} startDelay={h2L2Delay} />
+                  <AnimatedText text={h2Text} startDelay={h2L1Delay} />
                 </span>
               </h2>
 
               {/* P */}
-              <div className="max-w-md">
+              <div className="max-w-[420px]">
                 <AnimatedText
                   text={pText}
                   startDelay={pDelay}
-                  className="text-lg text-white/50 leading-relaxed"
+                  className="text-lg text-white leading-relaxed"
                   tag="p"
                 />
               </div>
 
               {/* Button */}
-              <button className="group relative flex items-center justify-center max-w-[180px] h-[48px] rounded-full overflow-hidden transition-all duration-700 ease-in-out border border-white/10">
+              <button className="group relative flex items-center justify-center max-w-[180px] h-[58px] rounded-full overflow-hidden transition-all duration-700 ease-in-out border border-white/30">
                 {/* Base Gradient Background */}
                 <div className="absolute inset-0 bg-gradient-to-r from-[#dd429d] to-[#485cfb] transition-opacity duration-700 group-hover:opacity-0" />
 
@@ -165,7 +152,7 @@ export function InNumbers() {
             whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
-            className="relative h-[440px] overflow-hidden rounded-[28px] border border-white/[0.08] bg-[#0a0a0a]"
+            className="relative h-[440px] overflow-hidden rounded-[14px] border border-[#fcfcfc40] bg-[#0a0a0a]"
           >
             <motion.div
               className="flex flex-col gap-3 p-4"
@@ -181,7 +168,7 @@ export function InNumbers() {
                   <h3
                     className="text-5xl font-bold mb-3 tracking-tight"
                     style={{
-                      background: "linear-gradient(to right, #dd429d, #b14bf4, #485cfb)",
+                      background: "linear-gradient(to right, #dd429d, #b14bf4, #fb48f5ff)",
                       WebkitBackgroundClip: "text",
                       WebkitTextFillColor: "transparent",
                       backgroundClip: "text",

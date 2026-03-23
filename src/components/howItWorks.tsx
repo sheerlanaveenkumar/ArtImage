@@ -231,37 +231,33 @@ function ImageGrid() {
 
 export default function HowItWorks() {
   return (
-    <section className="relative bg-black text-white py-24 px-6 md:px-12 lg:px-20 overflow-hidden min-h-screen">
+    <section className="relative bg-[#0b0510] text-white py-24 px-6 md:px-12 lg:px-20 overflow-hidden min-h-screen">
 
       {/* BG glow blobs */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-[20%]  left-[20%]  w-[550px] h-[750px] rounded-full bg-[#d946ef]/10 blur-[140px]" />
-        <div className="absolute top-[25%] right-[20%] w-[500px] h-[600px] rounded-full bg-[#6366f1]/10 blur-[130px]" />
-        <div className="absolute bottom-0  left-1/2   w-[500px] h-[300px] -translate-x-1/2 rounded-full bg-[#6366f1]/6 blur-[100px]" />
+        <div className="absolute top-[20%]  left-[20%]  w-[550px] h-[750px] rounded-full bg-[#d946ef]/15 blur-[150px]" />
+        <div className="absolute top-[25%] right-[20%] w-[500px] h-[600px] rounded-full bg-[#6366f1]/15 blur-[140px]" />
+        <div className="absolute bottom-0  left-1/2   w-[500px] h-[300px] -translate-x-1/2 rounded-full bg-[#6366f1]/10 blur-[100px]" />
       </div>
 
-      {/* Dot grid */}
+      {/* Grid Lines */}
       <div
-        className="absolute inset-0 pointer-events-none opacity-[0.20]"
+        className="absolute inset-0 pointer-events-none opacity-[0.4]"
         style={{
           backgroundImage: `
-      linear-gradient(to right, rgba(255, 255, 255, 0.10) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255,255,255,0.10) 1px, transparent 1px)
-    `,
-          backgroundSize: "80px 80px",
-
-          // Edge fade (important part)
-          maskImage:
-            "radial-gradient(circle at center, black 60%, transparent 100%)",
-          WebkitMaskImage:
-            "radial-gradient(circle at center, black 60%, transparent 100%)",
+            linear-gradient(to right, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255, 255, 255, 0.08) 1px, transparent 1px)
+          `,
+          backgroundSize: "100px 100px",
+          maskImage: "linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)",
+          WebkitMaskImage: "linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)",
         }}
       />
 
-      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-start relative z-10">
+      <div className="max-w-[84rem] mx-auto grid md:grid-cols-2 gap-16 items-start relative z-10">
 
         {/* ── LEFT ── */}
-        <div className="pt-10">
+        <div>
 
           {/* Badge */}
           <motion.div
@@ -269,7 +265,7 @@ export default function HowItWorks() {
             whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="inline-block px-5 py-2 rounded-full border border-white/10 text-[13px] font-bold uppercase tracking-widest text-white/50 mb-8"
+            className="inline-block px-5 py-2 rounded-full border border-white/30 text-[13px] font-bold uppercase tracking-widest text-white mb-8"
           >
             {badgeText}
           </motion.div>
@@ -280,11 +276,11 @@ export default function HowItWorks() {
           </h2>
 
           {/* P */}
-          <div className="max-w-lg mb-16">
+          <div className="mb-16 md:pr-4">
             <AnimatedText
               text={pText}
               startDelay={pDelay}
-              className="text-white/50 text-base md:text-lg leading-relaxed"
+              className="text-white text-base md:text-xl leading-relaxed"
               tag="p"
             />
           </div>
@@ -306,7 +302,7 @@ export default function HowItWorks() {
                 <AnimatedText
                   text={step.desc}
                   startDelay={i * 0.15 + 0.1 + step.id.length * 0.022 + 0.05}
-                  className="text-white/50 text-sm md:text-base max-w-sm leading-relaxed"
+                  className="text-white text-sm md:text-xl leading-relaxed md:pr-4"
                   tag="p"
                 />
               </motion.div>
@@ -315,20 +311,20 @@ export default function HowItWorks() {
         </div>
 
         {/* ── RIGHT — sticky card ── */}
-        <div className="sticky top-24">
+        <div className="sticky">
           <motion.div
             initial={{ opacity: 0, y: 30, filter: "blur(16px)" }}
             whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             viewport={{ once: true }}
             transition={{ duration: 0.9, ease: "easeOut" }}
             className="relative rounded-[2rem] p-8 md:p-10 shadow-2xl overflow-hidden border border-white/[0.08]"
-            style={{ background: "#0f0f0f" }}
+            style={{ backgroundImage: "linear-gradient(180deg, #241436 0%, #150A1F 100%)" }}
           >
             {/* Top shimmer line */}
-            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
 
             {/* Card title */}
-            <h3 className="text-lg md:text-xl font-bold text-white mb-5">
+            <h3 className="text-lg md:text-3xl font-bold text-white mb-5">
               <AnimatedText text="Create Awesome Characters" startDelay={0.3} />
             </h3>
 
@@ -341,7 +337,7 @@ export default function HowItWorks() {
                   whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.4 + i * 0.12 }}
-                  className="px-5 py-2 rounded-full text-xs font-bold text-white"
+                  className="px-6 py-1 rounded-full text-lg font-bold text-white"
                   style={{ background: "linear-gradient(135deg,#d946ef,#6366f1)" }}
                 >
                   {label}
@@ -355,7 +351,7 @@ export default function HowItWorks() {
               whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.7 }}
-              className="w-full rounded-full py-3.5 px-7 text-white/40 text-sm mb-7 border border-white/[0.08]"
+              className="w-full rounded-full py-2.5 px-7 text-white text-lg mb-7 border border-white/[0.08]"
               style={{ background: "rgba(255,255,255,0.03)" }}
             >
               Create stunning AI female characters..
